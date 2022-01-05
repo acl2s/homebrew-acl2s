@@ -6,6 +6,7 @@ class Acl2s < Formula
   sha256 "54e73243b9da162226b718fa92ae9aa99bd8885c672ff1787d907806c0a3715d"
   license "BSD-3-Clause"
   depends_on "sbcl" => :build
+  depends_on "zlib" unless OS.mac?
 
   resource "sbcl_files" do
     url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.1.11/sbcl-2.1.11-source.tar.bz2"
