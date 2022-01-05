@@ -8,7 +8,7 @@ class Acl2s < Formula
   depends_on "sbcl" => :build
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/projects/sbcl/files/sbcl/2.1.11/sbcl-2.1.11-source.tar.bz2"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.1.11/sbcl-2.1.11-source.tar.bz2"
     sha256 "bfc1481de7fdbdfaeef2ab0f0e8e84efd343433dea8d21cfbea8b0146cbdfefd"
   end
 
