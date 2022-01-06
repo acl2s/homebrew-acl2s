@@ -5,6 +5,12 @@ class Acl2s < Formula
   version "0.1.4"
   sha256 "54e73243b9da162226b718fa92ae9aa99bd8885c672ff1787d907806c0a3715d"
   license "BSD-3-Clause"
+
+  bottle do
+    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.4"
+    sha256 big_sur:      "fbee6ce938e52ce4bdd3405da9cd72fa34202ebc8542f75bfb7a609f1ea52af7"
+    sha256 x86_64_linux: "6ee028a256affc0c0a0dd922dd8b2d98ff6d15b035b88771664df4831a9eb223"
+  end
   depends_on "sbcl" => :build
   depends_on "zlib" unless OS.mac?
 
