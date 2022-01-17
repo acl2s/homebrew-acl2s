@@ -1,22 +1,17 @@
 class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "http://acl2s.ccs.neu.edu"
-  url "https://github.com/acl2/acl2/archive/b9b73e6b6d0fa76bbc76c9ea25e36e9b26f3d02d.tar.gz"
-  version "0.1.4"
-  sha256 "54e73243b9da162226b718fa92ae9aa99bd8885c672ff1787d907806c0a3715d"
+  url "https://github.com/acl2/acl2/archive/877c0c24d44821875472c32e165557212b9a3f56.tar.gz"
+  version "0.1.5"
+  sha256 "2c7fc517e0c504b6b52399ba8bebeeb31020878dd1f9eb090578c491e2ef8a28"
   license "BSD-3-Clause"
 
-  bottle do
-    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.4"
-    sha256 big_sur:      "fbee6ce938e52ce4bdd3405da9cd72fa34202ebc8542f75bfb7a609f1ea52af7"
-    sha256 x86_64_linux: "6ee028a256affc0c0a0dd922dd8b2d98ff6d15b035b88771664df4831a9eb223"
-  end
   depends_on "sbcl" => :build
   depends_on "zlib" unless OS.mac?
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.1.11/sbcl-2.1.11-source.tar.bz2"
-    sha256 "bfc1481de7fdbdfaeef2ab0f0e8e84efd343433dea8d21cfbea8b0146cbdfefd"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.2.0/sbcl-2.2.0-source.tar.bz2"
+    sha256 "2276957ea86ae9968ca486a9928c67a34cb31c9403ec657d24ecdf8458daa5c6"
   end
 
   resource "acl2s_scripts" do
