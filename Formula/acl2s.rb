@@ -8,6 +8,7 @@ class Acl2s < Formula
 
   bottle do
     root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.5"
+    sha256 arm64_monterey: "36993989b59c80c675a60a6130d45bab5137caf308def3a08d383671437b0bc9"
     sha256 catalina:     "4b327887f9cc5a223c527e65576df6267f18bf32bad7847275278f302f875684"
     sha256 x86_64_linux: "553a1c2352fef2b4d503db767d308d8575f921d29f831dfd7a358ac971af7ccd"
   end
