@@ -77,8 +77,8 @@ class Acl2s < Formula
   end
 
   test do
-    (testpath/"simple.lisp").write "(+ 2 2)(quit)"
+    (testpath/"simple.lisp").write "(+ 3 2)(quit)"
     output = shell_output("#{bin}/acl2s < #{testpath}/simple.lisp | grep 'ACL2S !>'")
-    assert_equal "ACL2S !>4\nACL2S !>", output.strip
+    assert_equal "ACL2S !>5\nACL2S !>", output.strip
   end
 end
