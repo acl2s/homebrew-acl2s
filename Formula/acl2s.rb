@@ -66,13 +66,15 @@ class Acl2s < Formula
     ln_sf acl2_prefix/"saved_acl2", bin/"acl2"
     ln_sf acl2_prefix/"books/build/cert.pl", bin/"cert.pl"
     ln_sf acl2_prefix/"books/build/clean.pl", bin/"clean.pl"
+    ENV["ACL2"] = bin/"acl2"
     ENV["ACL2S_SCRIPTS"] = scripts_prefix
     ENV["ACL2_SYSTEM_BOOKS"] = acl2_prefix/"books"
     ENV["ACL2_LISP"] = sbcl_prefix/"bin/sbcl"
     ENV["ACL2S_NUM_JOBS"] = "4"
-    ENV["ACL2_SNAPSHOT_INFO"] = "NONE"
+    ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2022"
     cd base_prefix do
       system scripts_prefix/"clean-gen-acl2.sh", "--no-git"
+      system bin/"cert.pl", acl2_prefix/"books/acl2s/top.lisp", "-j", "3"
     end
   end
 
