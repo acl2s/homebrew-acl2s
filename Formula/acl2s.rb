@@ -62,7 +62,7 @@ class Acl2s < Formula
     ENV["ACL2S_SCRIPTS"] = scripts_prefix
     ENV["ACL2_SYSTEM_BOOKS"] = acl2_prefix/"books"
     ENV["ACL2_LISP"] = sbcl_prefix/"bin/sbcl"
-    ENV["ACL2S_NUM_JOBS"] = "4"
+    ENV["ACL2S_NUM_JOBS"] = "3"
     ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2022"
     cd base_prefix do
       system scripts_prefix/"clean-gen-acl2.sh", "--no-git"
