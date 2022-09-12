@@ -6,12 +6,13 @@ class Acl2s < Formula
   sha256 "27de16c88f2483cdfd7f59c8da038b93a97b697d0825c0a75cb2b30ec2e53c08"
   license "BSD-3-Clause"
 
-  depends_on "sbcl" => :build
+  depends_on "ecl" => :build
   depends_on "zlib" unless OS.mac?
+  depends_on "zstd"
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.2.6/sbcl-2.2.6-source.tar.bz2"
-    sha256 "3e23048c8fa826fb913220beb2ac3697dbc5c0cdf2e89fed8db39ed1712304a0"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.2.8/sbcl-2.2.8-source.tar.bz2"
+    sha256 "992fcc2b5319010f7587cdc2294b088a595d6c0982ff195b565adfaf4b7d7b0e"
   end
 
   resource "acl2s_scripts" do
@@ -30,8 +31,9 @@ class Acl2s < Formula
     mkdir_p sbcl_prefix
     resource("sbcl_files").stage do
       ENV["SBCL_MACOSX_VERSION_MIN"] = MacOS.version if OS.mac?
+      xc_cmdline = "ecl --norc"
       args = [
-        "--xc-host=#{HOMEBREW_PREFIX}/bin/sbcl",
+        "--xc-host=#{xc_cmdline}",
         "--prefix=#{sbcl_prefix}",
         "--without-immobile-space",
         "--without-immobile-code",
