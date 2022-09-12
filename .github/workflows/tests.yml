@@ -27,6 +27,10 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: brew install-bundler-gems
 
+      - name: Set up Ubuntu runner
+        if: runner.os == 'Linux'
+        run: apt-get install -y linux-headers-generic
+
       - run: brew test-bot --only-cleanup-before
 
       - run: brew test-bot --only-setup
