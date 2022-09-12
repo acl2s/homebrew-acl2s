@@ -7,7 +7,6 @@ class Acl2s < Formula
   license "BSD-3-Clause"
 
   depends_on "ecl" => :build
-  depends_on "zlib" unless OS.mac?
   depends_on "zstd"
 
   resource "sbcl_files" do
