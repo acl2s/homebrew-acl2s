@@ -14,6 +14,7 @@ Or `brew tap mister-walter/acl2s` and then `brew install <formula>`.
 
 Run the following commands:
 ```
+brew update
 brew uninstall acl2s
 brew install --build-bottle acl2s
 brew bottle acl2s
