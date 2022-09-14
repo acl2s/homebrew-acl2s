@@ -1,12 +1,12 @@
 class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "http://acl2s.ccs.neu.edu"
-  url "https://github.com/acl2/acl2/archive/9033048b68d957a3ca25adcf31783cafa761a1eb.tar.gz"
+  url "https://github.com/acl2/acl2/archive/291b74423ed1e15ef54043548e3265be34a634d5.tar.gz"
   version "0.1.6"
-  sha256 "27de16c88f2483cdfd7f59c8da038b93a97b697d0825c0a75cb2b30ec2e53c08"
+  sha256 "74a12e59bcb7c5ebba19f5a0dec373263bd4989d1b8d7023e531eacc39571952"
   license "BSD-3-Clause"
 
-  depends_on "ecl" => :build
+  depends_on "sbcl" => :build
   depends_on "zstd"
 
   resource "sbcl_files" do
@@ -15,8 +15,8 @@ class Acl2s < Formula
   end
 
   resource "acl2s_scripts" do
-    url "https://gitlab.com/acl2s/external-tool-support/scripts/-/archive/ab2864f70484b1c855e0d287f10ff2eca855a36d/scripts-ab2864f70484b1c855e0d287f10ff2eca855a36d.tar.gz"
-    sha256 "276d54dbfb027659d715531cd6b8a12e45e51731f30b00da2ccaa7ca34bc7e1c"
+    url "https://gitlab.com/acl2s/external-tool-support/scripts/-/archive/100a982a5cf1a276ae6c5db4d608bd37edb3c6f2/scripts-100a982a5cf1a276ae6c5db4d608bd37edb3c6f2.tar.gz"
+    sha256 "02103ba5044c54bc850b9a5c0394a536f1e86b8cbf6196aeaf8331cef97127d5"
   end
 
   def install
@@ -30,7 +30,7 @@ class Acl2s < Formula
     mkdir_p sbcl_prefix
     resource("sbcl_files").stage do
       ENV["SBCL_MACOSX_VERSION_MIN"] = MacOS.version if OS.mac?
-      xc_cmdline = "ecl --norc"
+      xc_cmdline = "#{HOMEBREW_PREFIX}/bin/sbcl"
       args = [
         "--xc-host=#{xc_cmdline}",
         "--prefix=#{sbcl_prefix}",
@@ -63,17 +63,17 @@ class Acl2s < Formula
     ENV["ACL2S_SCRIPTS"] = scripts_prefix
     ENV["ACL2_SYSTEM_BOOKS"] = acl2_prefix/"books"
     ENV["ACL2_LISP"] = sbcl_prefix/"bin/sbcl"
-    ENV["ACL2S_NUM_JOBS"] = "3"
+    ENV["ACL2S_NUM_JOBS"] = "4"
     ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2022"
     cd base_prefix do
-      system scripts_prefix/"clean-gen-acl2.sh", "--no-git"
-      system bin/"cert.pl", acl2_prefix/"books/acl2s/top.lisp", "-j", "3"
+      system scripts_prefix/"clean-gen-acl2-acl2s.sh", "--no-git"
     end
+    ln_sf base_prefix/"acl2s", bin/"acl2s"
   end
 
   test do
     (testpath/"simple.lisp").write "(+ 3 2)(quit)"
-    output = shell_output("#{bin}/acl2 < #{testpath}/simple.lisp | grep 'ACL2 !>'")
-    assert_equal "ACL2 !>5\nACL2 !>", output.strip
+    output = shell_output("#{bin}/acl2s < #{testpath}/simple.lisp | grep 'ACL2S !>'")
+    assert_equal "ACL2S !>5\nACL2S !>", output.strip
   end
 end
