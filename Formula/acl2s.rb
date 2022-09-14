@@ -1,9 +1,9 @@
 class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "http://acl2s.ccs.neu.edu"
-  url "https://github.com/acl2/acl2/archive/291b74423ed1e15ef54043548e3265be34a634d5.tar.gz"
+  url "https://github.com/acl2/acl2/archive/2ea4ded522b0aded4882a473800df4b5730f2239.tar.gz"
   version "0.1.6"
-  sha256 "74a12e59bcb7c5ebba19f5a0dec373263bd4989d1b8d7023e531eacc39571952"
+  sha256 "568c151429d4fbe8a998d60c90ce13b7e36ca0f0f92c08c0fd035894580029ae"
   license "BSD-3-Clause"
 
   depends_on "sbcl" => :build
