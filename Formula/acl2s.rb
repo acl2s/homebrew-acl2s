@@ -9,6 +9,14 @@ class Acl2s < Formula
   depends_on "sbcl" => :build
   depends_on "zstd"
 
+  bottle do
+    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.6"
+    rebuild 1
+    sha256 monterey: "15c4bddf7849520c390223c7e20f17b57c456ada8ef65819bf46aa92ef773e8b"
+    sha256 arm64_monterey: "6985efa6142cc7dd2953c69b0f98144fd8c4454a8ca636d1ef84ce1e2eb2b199"
+    sha256 x86_64_linux: "9bea5b568f8cfbfeec159045d94ea34341de5aec2b78fae5031c0aa6d3b65926"
+  end
+
   resource "sbcl_files" do
     url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.2.8/sbcl-2.2.8-source.tar.bz2"
     sha256 "992fcc2b5319010f7587cdc2294b088a595d6c0982ff195b565adfaf4b7d7b0e"
