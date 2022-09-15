@@ -15,8 +15,8 @@ class Acl2s < Formula
   end
 
   resource "acl2s_scripts" do
-    url "https://gitlab.com/acl2s/external-tool-support/scripts/-/archive/ba98cfdf898dbc07df4313db62efd5e267a20495/scripts-ba98cfdf898dbc07df4313db62efd5e267a20495.tar.gz"
-    sha256 "00c10430582a9fd0c4058527e89031a66570787d749a4863847d40de49c59c65"
+    url "https://gitlab.com/acl2s/external-tool-support/scripts/-/archive/bba20c209af1351ea3ca4819f4001ff4db484792/scripts-bba20c209af1351ea3ca4819f4001ff4db484792.tar.gz"
+    sha256 "2a59fd219335b37f24aa872af6b8ed9b3716856f62a211c491e8415a26c6e9b0"
   end
 
   def install
@@ -63,7 +63,11 @@ class Acl2s < Formula
     ENV["ACL2S_SCRIPTS"] = scripts_prefix
     ENV["ACL2_SYSTEM_BOOKS"] = acl2_prefix/"books"
     ENV["ACL2_LISP"] = sbcl_prefix/"bin/sbcl"
-    ENV["ACL2S_NUM_JOBS"] = "4"
+    if ENV.key?("HOEMBREW_ACL2S_NUM_JOBS")
+      ENV["ACL2S_NUM_JOBS"] = ENV["HOMEBREW_ACL2S_NUM_JOBS"]
+    else
+      ENV["ACL2S_NUM_JOBS"] = "4"
+    end
     ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2022"
     cd base_prefix do
       system scripts_prefix/"clean-gen-acl2-acl2s.sh", "--no-git", "--all"
