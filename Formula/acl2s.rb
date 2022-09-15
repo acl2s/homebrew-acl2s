@@ -63,7 +63,7 @@ class Acl2s < Formula
     ENV["ACL2S_SCRIPTS"] = scripts_prefix
     ENV["ACL2_SYSTEM_BOOKS"] = acl2_prefix/"books"
     ENV["ACL2_LISP"] = sbcl_prefix/"bin/sbcl"
-    if ENV.key?("HOEMBREW_ACL2S_NUM_JOBS")
+    if ENV.key?("HOMEBREW_ACL2S_NUM_JOBS")
       ENV["ACL2S_NUM_JOBS"] = ENV["HOMEBREW_ACL2S_NUM_JOBS"]
     else
       ENV["ACL2S_NUM_JOBS"] = "4"
