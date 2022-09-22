@@ -77,6 +77,7 @@ class Acl2s < Formula
       ENV["ACL2S_NUM_JOBS"] = "4"
     end
     ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2022"
+    ENV["CERT_PL_RM_OUTFILES"] = "1"
     cd base_prefix do
       system scripts_prefix/"clean-gen-acl2-acl2s.sh", "--no-git", "--all"
     end
