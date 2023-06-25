@@ -9,14 +9,6 @@ class Acl2s < Formula
   depends_on "sbcl" => :build
   depends_on "zstd"
 
-#  bottle do
-#    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.6"
-#    rebuild 1
-#    sha256 arm64_monterey: "6985efa6142cc7dd2953c69b0f98144fd8c4454a8ca636d1ef84ce1e2eb2b199"
-#    sha256 monterey: "15c4bddf7849520c390223c7e20f17b57c456ada8ef65819bf46aa92ef773e8b"
-#    sha256 x86_64_linux: "9bea5b568f8cfbfeec159045d94ea34341de5aec2b78fae5031c0aa6d3b65926"
-#  end
-
   resource "sbcl_files" do
     url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.5/sbcl-2.3.5-source.tar.bz2"
     sha256 "89c90720cf9d05dbcd90d690e381a2514c0f1807159e0d7222220c5a8c2d5186"
@@ -73,10 +65,10 @@ class Acl2s < Formula
     ENV["ACL2S_SCRIPTS"] = scripts_prefix
     ENV["ACL2_SYSTEM_BOOKS"] = acl2_prefix/"books"
     ENV["ACL2_LISP"] = sbcl_prefix/"bin/sbcl"
-    if ENV.key?("HOMEBREW_ACL2S_NUM_JOBS")
-      ENV["ACL2S_NUM_JOBS"] = ENV["HOMEBREW_ACL2S_NUM_JOBS"]
+    ENV["ACL2S_NUM_JOBS"] = if ENV.key?("HOMEBREW_ACL2S_NUM_JOBS")
+      ENV["HOMEBREW_ACL2S_NUM_JOBS"]
     else
-      ENV["ACL2S_NUM_JOBS"] = "4"
+      "4"
     end
     ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2023"
     ENV["CERT_PL_RM_OUTFILES"] = "1"
