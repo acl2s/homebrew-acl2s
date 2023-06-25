@@ -1,25 +1,25 @@
 class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
-  homepage "http://acl2s.ccs.neu.edu"
-  url "https://github.com/acl2/acl2/archive/0f252c7d94b69e712fcd2ab5be1d2f50653ba97b.tar.gz"
-  version "0.1.6"
-  sha256 "867318960b73ae681b1464f23e1f7377d1778312e23d9a51748fb4f0bb8ba567"
+  homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
+  url "https://github.com/acl2/acl2/archive/a5aeae033f55517ac6ffa67945bb5d1be7da6e8d.tar.gz"
+  version "0.1.7"
+  sha256 "61fca3aa7f8cea136d92c7bc8f4aab52e21dbc75e54507d7cd1f7bddd402073d"
   license "BSD-3-Clause"
 
   depends_on "sbcl" => :build
   depends_on "zstd"
 
-  bottle do
-    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.6"
-    rebuild 1
-    sha256 monterey: "15c4bddf7849520c390223c7e20f17b57c456ada8ef65819bf46aa92ef773e8b"
-    sha256 arm64_monterey: "6985efa6142cc7dd2953c69b0f98144fd8c4454a8ca636d1ef84ce1e2eb2b199"
-    sha256 x86_64_linux: "9bea5b568f8cfbfeec159045d94ea34341de5aec2b78fae5031c0aa6d3b65926"
-  end
+#  bottle do
+#    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.6"
+#    rebuild 1
+#    sha256 arm64_monterey: "6985efa6142cc7dd2953c69b0f98144fd8c4454a8ca636d1ef84ce1e2eb2b199"
+#    sha256 monterey: "15c4bddf7849520c390223c7e20f17b57c456ada8ef65819bf46aa92ef773e8b"
+#    sha256 x86_64_linux: "9bea5b568f8cfbfeec159045d94ea34341de5aec2b78fae5031c0aa6d3b65926"
+#  end
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.2.8/sbcl-2.2.8-source.tar.bz2"
-    sha256 "992fcc2b5319010f7587cdc2294b088a595d6c0982ff195b565adfaf4b7d7b0e"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.5/sbcl-2.3.5-source.tar.bz2"
+    sha256 "89c90720cf9d05dbcd90d690e381a2514c0f1807159e0d7222220c5a8c2d5186"
   end
 
   resource "acl2s_scripts" do
@@ -45,7 +45,9 @@ class Acl2s < Formula
         "--without-immobile-space",
         "--without-immobile-code",
         "--without-compact-instance-header",
-        "--fancy",
+        "--with-sb-xref-for-internals",
+        "--with-sb-after-xc-core",
+        "--with-thread",
         "--dynamic-space-size=4Gb",
       ]
       system "./make.sh", *args
@@ -76,9 +78,14 @@ class Acl2s < Formula
     else
       ENV["ACL2S_NUM_JOBS"] = "4"
     end
-    ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2022"
+    ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2023"
+    ENV["CERT_PL_RM_OUTFILES"] = "1"
     cd base_prefix do
-      system scripts_prefix/"clean-gen-acl2-acl2s.sh", "--no-git", "--all"
+      system scripts_prefix/"clean-gen-acl2.sh", "--no-git", "--all"
+      cd acl2_prefix/"books" do
+        system "make", "build/Makefile-features"
+      end
+      system scripts_prefix/"gen-acl2s.sh", "--no-git"
     end
     ln_sf base_prefix/"acl2s", bin/"acl2s"
   end
