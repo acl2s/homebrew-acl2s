@@ -15,8 +15,8 @@ class Acl2s < Formula
   end
 
   resource "acl2s_scripts" do
-    url "https://gitlab.com/acl2s/external-tool-support/scripts/-/archive/bba20c209af1351ea3ca4819f4001ff4db484792/scripts-bba20c209af1351ea3ca4819f4001ff4db484792.tar.gz"
-    sha256 "2a59fd219335b37f24aa872af6b8ed9b3716856f62a211c491e8415a26c6e9b0"
+    url "https://gitlab.com/acl2s/external-tool-support/scripts/-/archive/7b3c7332eb7563feeff589a4e927116132ff01c7/scripts-7b3c7332eb7563feeff589a4e927116132ff01c7.tar.gz"
+    sha256 "baad56603a9cd295868db7bea01f675fd393adc67e0adb9f4ff948a13d2f46a0"
   end
 
   def install
@@ -73,11 +73,7 @@ class Acl2s < Formula
     ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2023"
     ENV["CERT_PL_RM_OUTFILES"] = "1"
     cd base_prefix do
-      system scripts_prefix/"clean-gen-acl2.sh", "--no-git", "--all"
-      cd acl2_prefix/"books" do
-        system "make", "build/Makefile-features"
-      end
-      system scripts_prefix/"gen-acl2s.sh", "--no-git"
+      system scripts_prefix/"clean-gen-acl2-acl2s.sh", "--no-git", "--all"
     end
     ln_sf base_prefix/"acl2s", bin/"acl2s"
   end
