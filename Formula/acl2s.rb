@@ -1,17 +1,17 @@
 class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
-  url "https://github.com/acl2/acl2/archive/a5aeae033f55517ac6ffa67945bb5d1be7da6e8d.tar.gz"
+  url "https://github.com/acl2/acl2/archive/a718c3aab01cc2980978136356ca5f9474ea5c94.tar.gz"
   version "0.1.7"
-  sha256 "61fca3aa7f8cea136d92c7bc8f4aab52e21dbc75e54507d7cd1f7bddd402073d"
+  sha256 "d9b3688680b9c427ab9a36f8aa2c8deac06914b15af8991d215b4234fe8e1457"
   license "BSD-3-Clause"
 
   depends_on "sbcl" => :build
   depends_on "zstd"
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.5/sbcl-2.3.5-source.tar.bz2"
-    sha256 "89c90720cf9d05dbcd90d690e381a2514c0f1807159e0d7222220c5a8c2d5186"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.6/sbcl-2.3.6-source.tar.bz2"
+    sha256 "b4414ca4d9a7474e8d884d7d63237e2f29ef459dfd5a848424a9c3fa551d19b9"
   end
 
   resource "acl2s_scripts" do
