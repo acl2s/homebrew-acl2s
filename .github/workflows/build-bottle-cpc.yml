@@ -1,8 +1,8 @@
-name: brew build-bottle
+name: brew build-bottle cpc
 on:
   workflow_dispatch
 jobs:
-  build-bottle:
+  build-bottle-cpc:
     strategy:
       matrix:
         os: [ubuntu-22.04, macos-11]
@@ -30,7 +30,7 @@ jobs:
 
       - run: brew test-bot --only-tap-syntax
 
-      - run: brew test-bot --only-formulae
+      - run: brew test-bot --only-formulae calculational-proof-checker
 
       - name: Upload bottles as artifact
         uses: actions/upload-artifact@main
