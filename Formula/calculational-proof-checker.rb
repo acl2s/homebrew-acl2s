@@ -1,9 +1,9 @@
 class CalculationalProofChecker < Formula
   desc "Checker for calculational proofs"
   homepage "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker"
-  url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/445c40ecf9d99054ce4b055d8df1dd41ab2aded8/calculational-proof-checker-445c40ecf9d99054ce4b055d8df1dd41ab2aded8.tar.gz"
+  url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/470b3642903801fc6e18d0ca3ae633d1d117decc/calculational-proof-checker-470b3642903801fc6e18d0ca3ae633d1d117decc.tar.gz"
   version "0.0.1"
-  sha256 "b2982013409c942ab97c9d975781479524ef258c85496d97995df60daddafce8"
+  sha256 "b5b1be2ef7ee56db9aefc4665db001c92848f805ff86adbfea3517088dddf10d"
   depends_on "acl2s"
 
   resource "quicklisp_installer" do
@@ -36,6 +36,8 @@ class CalculationalProofChecker < Formula
     cd cpc_prefix do
       system "make", "prove-file-java"
     end
+    mkdir_p bin
+    ln_sf cpc_prefix/"prove_file_java.sh", bin/"prove_file_java.sh"
   end
 
   test do
