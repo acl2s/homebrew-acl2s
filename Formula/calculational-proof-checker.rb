@@ -37,7 +37,7 @@ class CalculationalProofChecker < Formula
       system "make", "prove-file-java"
     end
     mkdir_p bin
-    ln_sf cpc_prefix/"prove_file_java.sh", bin/"prove_file_java.sh"
+    ln_sf cpc_prefix/"prove-file-java.sh", bin/"prove-file-java.sh"
   end
 
   test do
