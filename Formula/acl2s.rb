@@ -2,16 +2,9 @@ class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
   url "https://github.com/acl2/acl2/archive/a718c3aab01cc2980978136356ca5f9474ea5c94.tar.gz"
-  version "0.1.7"
+  version "0.1.8"
   sha256 "d9b3688680b9c427ab9a36f8aa2c8deac06914b15af8991d215b4234fe8e1457"
   license "BSD-3-Clause"
-
-  bottle do
-    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.7"
-    sha256 arm64_ventura: "3af01b7bd0cc90ff9de287f7070ed5eef52f2c1fe8884c516f580a8b24ec871b"
-    sha256 big_sur:       "c64c74eb0fbdafe1ad33cdfc4c2cb81bd5fa06f763e512d0cbe6b4a802f2421d"
-    sha256 x86_64_linux:  "a7ff6e0a4a58ae5fe474488b439596007e39dea9aee8d6906ee633fb0aceee10"
-  end
 
   depends_on "sbcl" => :build
   depends_on "zstd"
@@ -26,10 +19,22 @@ class Acl2s < Formula
     sha256 "baad56603a9cd295868db7bea01f675fd393adc67e0adb9f4ff948a13d2f46a0"
   end
 
+  resource "calculational_proof_checker" do
+    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/470b3642903801fc6e18d0ca3ae633d1d117decc/calculational-proof-checker-470b3642903801fc6e18d0ca3ae633d1d117decc.tar.gz"
+    sha256 "b5b1be2ef7ee56db9aefc4665db001c92848f805ff86adbfea3517088dddf10d"
+  end
+
+  resource "quicklisp_installer" do
+    url "https://beta.quicklisp.org/quicklisp.lisp"
+    sha256 "4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17"
+  end
+
   def install
     base_prefix = prefix/"opt/acl2s"
     sbcl_prefix = base_prefix/"sbcl"
     acl2_prefix = base_prefix/"acl2"
+    quicklisp_prefix = base_prefix/"quicklisp"
+    cpc_prefix = base_prefix/"calculational-proof-checker"
     scripts_prefix = base_prefix/"scripts"
 
     # SBCL install
@@ -83,6 +88,23 @@ class Acl2s < Formula
       system scripts_prefix/"clean-gen-acl2-acl2s.sh", "--no-git", "--all"
     end
     ln_sf base_prefix/"acl2s", bin/"acl2s"
+
+    # Install Quicklisp
+    rm_rf quicklisp_prefix
+    buildpath.install resource("quicklisp_installer")
+    system sbcl_prefix/"bin/sbcl", "--load", buildpath/"quicklisp.lisp", "--eval",
+           "(quicklisp-quickstart:install :path \"#{quicklisp_prefix}\")", "--quit"
+    rm buildpath/"quicklisp.lisp"
+
+    # Install/build CPC
+    rm_rf cpc_prefix
+    mkdir_p cpc_prefix
+    cpc_prefix.install resource("calculational_proof_checker")
+    ENV["QUICKLISP_SETUP"] = quicklisp_prefix/"setup.lisp"
+    cd cpc_prefix do
+      system "make", "prove-file-java"
+    end
+    ln_sf cpc_prefix/"prove-file-java.sh", bin/"prove-file-java.sh"
   end
 
   test do
