@@ -8,8 +8,9 @@ class Acl2s < Formula
 
   bottle do
     root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.8"
-    sha256 big_sur:      "fbe0c9a1c535f7914c1adb32df9a0811b877ac93a80147ff4de51493d8532fee"
-    sha256 x86_64_linux: "96b70e00111ad7a1f814f4441fae7e169a121ecae4febc02f0f85a8f2a7ef3b8"
+    sha256 arm64_ventura: "62696e1cde0554d6b316c5d6ffbb6869cad0b666a051a9763ae8ffdca1f5915b"
+    sha256 big_sur:       "fbe0c9a1c535f7914c1adb32df9a0811b877ac93a80147ff4de51493d8532fee"
+    sha256 x86_64_linux:  "96b70e00111ad7a1f814f4441fae7e169a121ecae4febc02f0f85a8f2a7ef3b8"
   end
 
   depends_on "sbcl" => :build
