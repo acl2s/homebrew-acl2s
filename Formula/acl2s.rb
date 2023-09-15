@@ -2,23 +2,16 @@ class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
   url "https://github.com/acl2/acl2/archive/a718c3aab01cc2980978136356ca5f9474ea5c94.tar.gz"
-  version "0.1.8"
+  version "0.1.9"
   sha256 "d9b3688680b9c427ab9a36f8aa2c8deac06914b15af8991d215b4234fe8e1457"
   license "BSD-3-Clause"
 
-  bottle do
-    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.8"
-    sha256 arm64_ventura: "62696e1cde0554d6b316c5d6ffbb6869cad0b666a051a9763ae8ffdca1f5915b"
-    sha256 big_sur:       "fbe0c9a1c535f7914c1adb32df9a0811b877ac93a80147ff4de51493d8532fee"
-    sha256 x86_64_linux:  "96b70e00111ad7a1f814f4441fae7e169a121ecae4febc02f0f85a8f2a7ef3b8"
-  end
-
-  depends_on "sbcl" => :build
+  depends_on "clozure-cl" => :build
   depends_on "zstd"
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.6/sbcl-2.3.6-source.tar.bz2"
-    sha256 "b4414ca4d9a7474e8d884d7d63237e2f29ef459dfd5a848424a9c3fa551d19b9"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.8/sbcl-2.3.8-source.tar.bz2"
+    sha256 "421571b2ac916e58be8ebcea5ef4abf8d7902863db6a1d0a5efa9500adca0d29"
   end
 
   resource "acl2s_scripts" do
@@ -49,7 +42,7 @@ class Acl2s < Formula
     mkdir_p sbcl_prefix
     resource("sbcl_files").stage do
       ENV["SBCL_MACOSX_VERSION_MIN"] = MacOS.version if OS.mac?
-      xc_cmdline = "#{HOMEBREW_PREFIX}/bin/sbcl"
+      xc_cmdline = "#{HOMEBREW_PREFIX}/bin/ccl64"
       args = [
         "--xc-host=#{xc_cmdline}",
         "--prefix=#{sbcl_prefix}",
