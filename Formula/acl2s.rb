@@ -6,7 +6,7 @@ class Acl2s < Formula
   sha256 "d9b3688680b9c427ab9a36f8aa2c8deac06914b15af8991d215b4234fe8e1457"
   license "BSD-3-Clause"
 
-  depends_on "clozure-cl" => :build
+  depends_on "sbcl" => :build
   depends_on "zstd"
 
   resource "sbcl_files" do
@@ -42,7 +42,7 @@ class Acl2s < Formula
     mkdir_p sbcl_prefix
     resource("sbcl_files").stage do
       ENV["SBCL_MACOSX_VERSION_MIN"] = MacOS.version if OS.mac?
-      xc_cmdline = "#{HOMEBREW_PREFIX}/bin/ccl64"
+      xc_cmdline = "#{HOMEBREW_PREFIX}/bin/sbcl"
       args = [
         "--xc-host=#{xc_cmdline}",
         "--prefix=#{sbcl_prefix}",
