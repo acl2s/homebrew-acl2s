@@ -10,8 +10,8 @@ class Acl2s < Formula
   depends_on "zstd"
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.8/sbcl-2.3.8-source.tar.bz2"
-    sha256 "421571b2ac916e58be8ebcea5ef4abf8d7902863db6a1d0a5efa9500adca0d29"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.9/sbcl-2.3.9-source.tar.bz2"
+    sha256 "7d289a91232022028bf0128900c32bf00e4c5430c32f28af0594c8a592a98654"
   end
 
   resource "acl2s_scripts" do
