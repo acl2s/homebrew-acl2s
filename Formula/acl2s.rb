@@ -2,16 +2,9 @@ class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
   url "https://github.com/acl2/acl2/archive/a718c3aab01cc2980978136356ca5f9474ea5c94.tar.gz"
-  version "0.1.9"
+  version "0.1.10"
   sha256 "d9b3688680b9c427ab9a36f8aa2c8deac06914b15af8991d215b4234fe8e1457"
   license "BSD-3-Clause"
-
-  bottle do
-    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.9"
-    sha256 arm64_sonoma: "56e612c9a1f7865c33f14fa67c33dea8ba3d8350b1fbd320be74f9c17e2e3e4f"
-    sha256 big_sur:      "a48ff714afe51f145706e4a7ffff28d9331788bbc79de1eba2b6427df6770214"
-    sha256 x86_64_linux: "2ca13ab93300dd6e8b12dc96d4883512a78b1a3a167550a7324e9eaaa239e931"
-  end
 
   depends_on "sbcl" => :build
   depends_on "zstd"
@@ -27,8 +20,8 @@ class Acl2s < Formula
   end
 
   resource "calculational_proof_checker" do
-    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/470b3642903801fc6e18d0ca3ae633d1d117decc/calculational-proof-checker-470b3642903801fc6e18d0ca3ae633d1d117decc.tar.gz"
-    sha256 "b5b1be2ef7ee56db9aefc4665db001c92848f805ff86adbfea3517088dddf10d"
+    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/f99378b3968e23dab12976dd6159a483cf8abe19/calculational-proof-checker-f99378b3968e23dab12976dd6159a483cf8abe19.tar.gz"
+    sha256 "ac881f3000843c7e8a722b4f059db30c02799313829af8184c89390286d326a3"
   end
 
   resource "quicklisp_installer" do
