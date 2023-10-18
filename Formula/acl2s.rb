@@ -6,6 +6,12 @@ class Acl2s < Formula
   sha256 "d9b3688680b9c427ab9a36f8aa2c8deac06914b15af8991d215b4234fe8e1457"
   license "BSD-3-Clause"
 
+  bottle do
+    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.10"
+    sha256 big_sur:      "17b381eb32015ef7d0717256c532fba233991d3104985b892ac132bb109fc4bc"
+    sha256 x86_64_linux: "1921953bb6d26e5791210462529a8276284391d68e2c93d1b58cd38ecd65f318"
+  end
+
   depends_on "sbcl" => :build
   depends_on "zstd"
 
