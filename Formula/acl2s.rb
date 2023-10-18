@@ -8,6 +8,7 @@ class Acl2s < Formula
 
   bottle do
     root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.10"
+    sha256 arm64_sonoma: "5591010b15167de429f9838a123f50af287134141ed0708d855fa32287558f48"
     sha256 big_sur:      "17b381eb32015ef7d0717256c532fba233991d3104985b892ac132bb109fc4bc"
     sha256 x86_64_linux: "1921953bb6d26e5791210462529a8276284391d68e2c93d1b58cd38ecd65f318"
   end
