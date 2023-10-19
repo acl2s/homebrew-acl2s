@@ -10,6 +10,7 @@ class Acl2s < Formula
     root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.10"
     sha256 arm64_sonoma:  "5591010b15167de429f9838a123f50af287134141ed0708d855fa32287558f48"
     sha256 arm64_ventura: "881c414003e7aac54a34094d233a93a61024d9bfde327a77d364f6333b8538ff"
+    sha256 monterey:      "a642790b6599b0dc45f3e57c951f8ea3234b08a8face8aae3730140c5ee0e8b0"
     sha256 big_sur:       "17b381eb32015ef7d0717256c532fba233991d3104985b892ac132bb109fc4bc"
     sha256 x86_64_linux:  "1921953bb6d26e5791210462529a8276284391d68e2c93d1b58cd38ecd65f318"
   end
