@@ -20,8 +20,8 @@ class Acl2s < Formula
   end
 
   resource "calculational_proof_checker" do
-    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/876ebe8842bb48cfa2d680e08bfcaae4b9aaa633/calculational-proof-checker-876ebe8842bb48cfa2d680e08bfcaae4b9aaa633.tar.gz"
-    sha256 "b00000a340ba031a95c630256bebbc71c3c399a9378867e0a691aa454851dce4"
+    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/8cc3d370cccf9471a8c01c26d62721f1e6defb33/calculational-proof-checker-8cc3d370cccf9471a8c01c26d62721f1e6defb33.tar.gz"
+    sha256 "aa969a409566bf378a6a1dd09f73cb43bfb862c9aa164ef2dc37922fcc1eeef1"
   end
 
   resource "quicklisp_installer" do
