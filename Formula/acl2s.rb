@@ -102,7 +102,7 @@ class Acl2s < Formula
     cpc_prefix.install resource("calculational_proof_checker")
     ENV["QUICKLISP_SETUP"] = quicklisp_prefix/"setup.lisp"
     cd cpc_prefix do
-      system "make", "prove-file-java"
+      system "make", "build-java-binary"
     end
     ln_sf cpc_prefix/"prove-file-java.sh", bin/"prove-file-java.sh"
   end
