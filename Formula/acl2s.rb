@@ -2,23 +2,16 @@ class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
   url "https://github.com/acl2/acl2/archive/236c425f6a679cb5bbc26627c1517ac506fd3b0a.tar.gz"
-  version "0.1.11"
+  version "0.1.12"
   sha256 "f3bf8f346070628c9f540a99478e5813dce021ad3f9b2ccfa769ff0cf6d41ec5"
   license "BSD-3-Clause"
-
-  bottle do
-    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.11"
-    sha256 arm64_ventura: "d16f4de130269af5b2f4bab29836a7db1a93285862f4d2bc40855b304d27ac56"
-    sha256 monterey:      "c1f8e0dced39050794542ea4c5e51a814befdb2a05116089b1b69794337cf5bc"
-    sha256 x86_64_linux:  "608b32197fd48179b00a434a132891799538cf4dfc3774ed375e84ee43e59625"
-  end
 
   depends_on "sbcl" => :build
   depends_on "zstd"
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.9/sbcl-2.3.9-source.tar.bz2"
-    sha256 "7d289a91232022028bf0128900c32bf00e4c5430c32f28af0594c8a592a98654"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.10/sbcl-2.3.10-source.tar.bz2"
+    sha256 "358033315d07e4c5a6c838ee7f22cfc4d49e94848eb71ec1389d494bc32dd2ab"
   end
 
   resource "acl2s_scripts" do
@@ -27,8 +20,8 @@ class Acl2s < Formula
   end
 
   resource "calculational_proof_checker" do
-    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/8cc3d370cccf9471a8c01c26d62721f1e6defb33/calculational-proof-checker-8cc3d370cccf9471a8c01c26d62721f1e6defb33.tar.gz"
-    sha256 "aa969a409566bf378a6a1dd09f73cb43bfb862c9aa164ef2dc37922fcc1eeef1"
+    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/ce0b753aa8c1e62edf54e1a2ff41c3f66e5f335e/calculational-proof-checker-ce0b753aa8c1e62edf54e1a2ff41c3f66e5f335e.tar.gz"
+    sha256 "b7a81876941a1d6df1a4430fe5000c544b18b704c442df2e55da412f3e3888a6"
   end
 
   resource "quicklisp_installer" do
