@@ -45,7 +45,7 @@ class Acl2s < Formula
     scripts_prefix = base_prefix/"scripts"
 
     # SBCL install
-    rm_rf sbcl_prefix
+    rm_r sbcl_prefix if Dir.exist?(sbcl_prefix)
     mkdir_p sbcl_prefix
     resource("sbcl_files").stage do
       ENV["SBCL_MACOSX_VERSION_MIN"] = MacOS.version if OS.mac?
@@ -67,8 +67,8 @@ class Acl2s < Formula
     end
 
     # ACL2
-    rm_rf scripts_prefix
-    rm_rf acl2_prefix
+    rm_r scripts_prefix if Dir.exist?(scripts_prefix)
+    rm_r acl2_prefix if Dir.exist?(acl2_prefix)
     scripts_prefix.install resource("acl2s_scripts")
     acl2_prefix.install Dir["*"]
     mkdir_p bin
@@ -97,14 +97,14 @@ class Acl2s < Formula
     ln_sf base_prefix/"acl2s", bin/"acl2s"
 
     # Install Quicklisp
-    rm_rf quicklisp_prefix
+    rm_r quicklisp_prefix if Dir.exist?(quicklisp_prefix)
     buildpath.install resource("quicklisp_installer")
     system sbcl_prefix/"bin/sbcl", "--load", buildpath/"quicklisp.lisp", "--eval",
            "(quicklisp-quickstart:install :path \"#{quicklisp_prefix}\")", "--quit"
     rm buildpath/"quicklisp.lisp"
 
     # Install/build CPC
-    rm_rf cpc_prefix
+    rm_r cpc_prefix if Dir.exist?(cpc_prefix)
     mkdir_p cpc_prefix
     cpc_prefix.install resource("calculational_proof_checker")
     ENV["QUICKLISP_SETUP"] = quicklisp_prefix/"setup.lisp"
