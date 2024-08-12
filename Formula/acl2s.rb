@@ -7,7 +7,7 @@ class Acl2s < Formula
   license "BSD-3-Clause"
 
   bottle do
-    root_url "https://github.com/mister-walter/homebrew-acl2s/releases/download/acl2s-0.1.12"
+    root_url "https://github.com/acl2s/homebrew-acl2s/releases/download/acl2s-0.1.12"
     sha256 arm64_ventura: "d748c00ba6e6edf0c839c75ccb085df8b9daad0735d07077b370e9cd167ae0a3"
     sha256 monterey:      "e6cabf3b00730f1a6e85286e0e8fa4133ba3052f2e10e22276fdabf8fc00ac11"
     sha256 x86_64_linux:  "cf182953f65f478a758620b704d51d3463b55dd49cea5ba2e202b5226bebc327"

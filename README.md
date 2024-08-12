@@ -1,10 +1,10 @@
-# Mister-walter Acl2s
+# Homebrew Formula for ACL2s
 
 ## How do I install these formulae?
 
-`brew install mister-walter/acl2s/<formula>`
+`brew install acl2s/acl2s/acl2s`
 
-Or `brew tap mister-walter/acl2s` and then `brew install <formula>`.
+Or `brew tap acl2s/acl2s` and then `brew install acl2s`.
 
 ## Documentation
 
@@ -28,5 +28,5 @@ also print out a `bottle do` block. This block should be added to the
 recipe after a bottle has been generated for each OS/architecture
 desired. A release should also be created on GitHub, where all of the
 bottles should be uploaded. A `root_url` entry should be added in the
-`bottle do` block that points to the GitHub release. See https://github.com/mister-walter/homebrew-acl2s/commit/0e07ff1fbceaef42a1a68e027ec185584885c48b
+`bottle do` block that points to the GitHub release. See https://github.com/acl2s/homebrew-acl2s/commit/0e07ff1fbceaef42a1a68e027ec185584885c48b
 for an example of what the final block should look like.
