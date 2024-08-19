@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PARENT_DIR="$( dirname "$SCRIPT_DIR" )"
-cd "$PARENT_DIR"
+PARENT_DIR="$( dirname "${SCRIPT_DIR}" )"
+cd "${PARENT_DIR}" || exit 1
 
 # This script uses fancy experimental Docker BuildKit features to
 # provide a nice debug experience
