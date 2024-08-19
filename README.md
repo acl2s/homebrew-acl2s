@@ -10,6 +10,15 @@ Or `brew tap acl2s/acl2s` and then `brew install acl2s`.
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
 
+## Testing Locally
+
+To test the formula locally, one can use the `test-docker/build.sh`
+script. If the build fails and you'd like to debug it, you can use
+`test-docker/debug.sh` which should work on a fairly modern version of
+Docker/BuildKit. `debug.sh` should drop you into a Bash shell if the
+build fails for any reason, so you can explore any log files to try
+and understand the failure.
+
 ## Generating bottles
 
 Run the following commands:
