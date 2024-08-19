@@ -1,34 +1,27 @@
 class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
-  url "https://github.com/acl2/acl2/archive/236c425f6a679cb5bbc26627c1517ac506fd3b0a.tar.gz"
-  version "0.1.12"
-  sha256 "f3bf8f346070628c9f540a99478e5813dce021ad3f9b2ccfa769ff0cf6d41ec5"
+  url "https://github.com/acl2/acl2/archive/1a6eb5cd12d6ed4982e2a5ba9614169ce74af0da.tar.gz"
+  version "0.1.13"
+  sha256 "6851c18747fbb8dff82518d4f80a04c1f6b9007cd51ecda9c2368810caa1c8fc"
   license "BSD-3-Clause"
-
-  bottle do
-    root_url "https://github.com/acl2s/homebrew-acl2s/releases/download/acl2s-0.1.12"
-    sha256 arm64_ventura: "d748c00ba6e6edf0c839c75ccb085df8b9daad0735d07077b370e9cd167ae0a3"
-    sha256 monterey:      "e6cabf3b00730f1a6e85286e0e8fa4133ba3052f2e10e22276fdabf8fc00ac11"
-    sha256 x86_64_linux:  "cf182953f65f478a758620b704d51d3463b55dd49cea5ba2e202b5226bebc327"
-  end
 
   depends_on "sbcl" => :build
   depends_on "zstd"
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.10/sbcl-2.3.10-source.tar.bz2"
-    sha256 "358033315d07e4c5a6c838ee7f22cfc4d49e94848eb71ec1389d494bc32dd2ab"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.4.7/sbcl-2.4.7-source.tar.bz2"
+    sha256 "68544d2503635acd015d534ccc9b2ae9f68996d429b5a9063fd22ff0925011d2"
   end
 
   resource "acl2s_scripts" do
-    url "https://gitlab.com/acl2s/external-tool-support/scripts/-/archive/7b3c7332eb7563feeff589a4e927116132ff01c7/scripts-7b3c7332eb7563feeff589a4e927116132ff01c7.tar.gz"
-    sha256 "baad56603a9cd295868db7bea01f675fd393adc67e0adb9f4ff948a13d2f46a0"
+    url "https://gitlab.com/acl2s/external-tool-support/scripts/-/archive/a1cdbf02f0d2fa371b531b0d9a00ee4d534e4572/scripts-a1cdbf02f0d2fa371b531b0d9a00ee4d534e4572.tar.gz"
+    sha256 "734daa675e384e79b314c1bbcecba915a9036d069cf50e9e265f54f4b12fc97b"
   end
 
   resource "calculational_proof_checker" do
-    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/ce0b753aa8c1e62edf54e1a2ff41c3f66e5f335e/calculational-proof-checker-ce0b753aa8c1e62edf54e1a2ff41c3f66e5f335e.tar.gz"
-    sha256 "b7a81876941a1d6df1a4430fe5000c544b18b704c442df2e55da412f3e3888a6"
+    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/1408c232c486ea6334f59af632eceac9a67b7fec/calculational-proof-checker-1408c232c486ea6334f59af632eceac9a67b7fec.tar.gz"
+    sha256 "e34522ce4b337cf8582ccd393419ee785134899e915c9de6cb9d9bc69c31e9ca"
   end
 
   resource "quicklisp_installer" do
@@ -89,7 +82,7 @@ class Acl2s < Formula
     else
       "4"
     end
-    ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2023"
+    ENV["ACL2_SNAPSHOT_INFO"] = "CS2800 Fall 2024"
     ENV["CERT_PL_RM_OUTFILES"] = "1"
     cd base_prefix do
       system scripts_prefix/"clean-gen-acl2-acl2s.sh", "--no-git", "--all"
