@@ -20,8 +20,8 @@ class Acl2s < Formula
   end
 
   resource "calculational_proof_checker" do
-    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/1408c232c486ea6334f59af632eceac9a67b7fec/calculational-proof-checker-1408c232c486ea6334f59af632eceac9a67b7fec.tar.gz"
-    sha256 "e34522ce4b337cf8582ccd393419ee785134899e915c9de6cb9d9bc69c31e9ca"
+    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/c6449d84c6d70613c884164a9eefc2f72cdf05c8/calculational-proof-checker-c6449d84c6d70613c884164a9eefc2f72cdf05c8.tar.gz"
+    sha256 "0e95f84b656ea34ae4bba59dbb3f4373228a0f1a4743de78462d0b35cebbf751"
   end
 
   resource "quicklisp_installer" do
@@ -95,6 +95,10 @@ class Acl2s < Formula
     system sbcl_prefix/"bin/sbcl", "--load", buildpath/"quicklisp.lisp", "--eval",
            "(quicklisp-quickstart:install :path \"#{quicklisp_prefix}\")", "--quit"
     rm buildpath/"quicklisp.lisp"
+
+    # Use Ultralisp
+    system sbcl_prefix/"bin/sbcl", "--load", quicklisp_prefix/"setup.lisp", "--eval",
+"(ql-dist:install-dist \"http://dist.ultralisp.org/\" :prompt nil)"
 
     # Install/build CPC
     rm_r cpc_prefix if Dir.exist?(cpc_prefix)
