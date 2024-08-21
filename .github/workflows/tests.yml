@@ -8,7 +8,7 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [ubuntu-24.04, macos-12, macos-14]
+        os: [macos-14]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up Homebrew
@@ -35,6 +35,13 @@ jobs:
 
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
+
+      - name: Upload logs as artifact
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/upload-artifact@main
+        with:
+          name: logs
+          path: '/Users/runner/work/homebrew-acl2s/homebrew-acl2s/logs/*'
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
