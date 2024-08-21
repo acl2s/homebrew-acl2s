@@ -1,0 +1,3 @@
+{
+    "acl2s": ["opt/acl2s/acl2/books/kestrel/axe/x86/examples/*/*.macho64", "opt/acl2s/acl2/books/kestrel/axe/x86/examples/*/*.executable"]
+}
