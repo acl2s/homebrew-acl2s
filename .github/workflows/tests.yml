@@ -34,6 +34,7 @@ jobs:
       - run: brew test-bot --only-tap-syntax
 
       - run: brew test-bot --only-formulae
+        timeout-minutes: 60
         if: github.event_name == 'pull_request'
 
       - name: Upload logs as artifact
