@@ -49,7 +49,7 @@ class Acl2s < Formula
     mkdir_p sbcl_prefix
     resource("sbcl_files").stage do
       ENV["SBCL_MACOSX_VERSION_MIN"] = MacOS.version if OS.mac?
-      xc_cmdline = "#{HOMEBREW_PREFIX}/bin/sbcl"
+      xc_cmdline = "sbcl"
       args = [
         "--xc-host=#{xc_cmdline}",
         "--prefix=#{sbcl_prefix}",
