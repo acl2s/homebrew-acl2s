@@ -98,7 +98,7 @@ class Acl2s < Formula
 
     # Use Ultralisp
     system sbcl_prefix/"bin/sbcl", "--load", quicklisp_prefix/"setup.lisp", "--eval",
-"(ql-dist:install-dist \"http://dist.ultralisp.org/\" :prompt nil)"
+"(ql-dist:install-dist \"http://dist.ultralisp.org/\" :prompt nil)", "--non-interactive"
 
     # Install/build CPC
     rm_r cpc_prefix if Dir.exist?(cpc_prefix)
