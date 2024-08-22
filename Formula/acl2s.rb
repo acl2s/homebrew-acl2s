@@ -7,10 +7,10 @@ class Acl2s < Formula
   license "BSD-3-Clause"
 
   bottle do
-    root_url "https://github.com/acl2s/homebrew-acl2s/releases/download/acl2s-0.1.12"
-    sha256 arm64_ventura: "d748c00ba6e6edf0c839c75ccb085df8b9daad0735d07077b370e9cd167ae0a3"
-    sha256 monterey:      "e6cabf3b00730f1a6e85286e0e8fa4133ba3052f2e10e22276fdabf8fc00ac11"
-    sha256 x86_64_linux:  "cf182953f65f478a758620b704d51d3463b55dd49cea5ba2e202b5226bebc327"
+    root_url "https://github.com/acl2s/homebrew-acl2s/releases/download/acl2s-0.1.13"
+    sha256 arm64_sonoma: "cc945feee904f6f0d6d08e033c0d3c35586d66241fb355bf3aed79dd27c4c318"
+    sha256 monterey:     "bda52486b32b7121f211fd59f55c28cb5643efa487e83a40787238ad2c585a83"
+    sha256 x86_64_linux: "c266a31a4981297321c7e799af8dd9ae4509653dfc85cde8a30f4fab7bd6715c"
   end
 
   depends_on "sbcl" => :build
