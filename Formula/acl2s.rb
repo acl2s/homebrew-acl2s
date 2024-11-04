@@ -2,7 +2,7 @@ class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
   url "https://github.com/acl2/acl2/archive/1a6eb5cd12d6ed4982e2a5ba9614169ce74af0da.tar.gz"
-  version "0.1.14"
+  version "0.1.15"
   sha256 "6851c18747fbb8dff82518d4f80a04c1f6b9007cd51ecda9c2368810caa1c8fc"
   license "BSD-3-Clause"
 
@@ -27,8 +27,8 @@ class Acl2s < Formula
   end
 
   resource "calculational_proof_checker" do
-    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/90976c040de05965a08f969d4b51ffdc3eca8831/calculational-proof-checker-90976c040de05965a08f969d4b51ffdc3eca8831.tar.gz"
-    sha256 "5459693b5c6320ac1184e6e50822f5b4671b0b70cce12ae1f9c29c2160268a13"
+    url "https://gitlab.com/acl2s/proof-checking/calculational-proof-checker/-/archive/afc28e2f95b0dcfda74ca2ece5b30c02f6dd3968/calculational-proof-checker-afc28e2f95b0dcfda74ca2ece5b30c02f6dd3968.tar.gz"
+    sha256 "0c0d411117abe86fa0ce35bf1e950dcff6ddd2154bbbd2f939c92d560d39579f"
   end
 
   resource "quicklisp_installer" do
