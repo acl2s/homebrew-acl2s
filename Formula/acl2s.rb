@@ -1,9 +1,9 @@
 class Acl2s < Formula
   desc "ACL2 Sedan theorem prover, built on top of ACL2"
   homepage "https://www.cs.utexas.edu/users/moore/acl2/manuals/current/manual/?topic=ACL2____ACL2-SEDAN"
-  url "https://github.com/acl2/acl2/archive/1a6eb5cd12d6ed4982e2a5ba9614169ce74af0da.tar.gz"
-  version "0.1.16"
-  sha256 "6851c18747fbb8dff82518d4f80a04c1f6b9007cd51ecda9c2368810caa1c8fc"
+  url "https://github.com/acl2/acl2/archive/0e06128c12cc5bdbe5040248317f75debc4990eb.tar.gz"
+  version "0.1.17"
+  sha256 "c80baf3e7282769f162c7c34b803cfb7ddc1984532011b6639d4cdf7a0d8012e"
   license "BSD-3-Clause"
 
   bottle do
@@ -17,8 +17,8 @@ class Acl2s < Formula
   depends_on "zstd"
 
   resource "sbcl_files" do
-    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.4.7/sbcl-2.4.7-source.tar.bz2"
-    sha256 "68544d2503635acd015d534ccc9b2ae9f68996d429b5a9063fd22ff0925011d2"
+    url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.4.10/sbcl-2.4.10-source.tar.bz2"
+    sha256 "ceeb396b69d2913eee04841c2af6beca5c342ce1464c3fe3e453f2de10c5e2f8"
   end
 
   resource "acl2s_scripts" do
